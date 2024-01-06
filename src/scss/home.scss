@@ -1,0 +1,355 @@
+//====================================================================================================
+
+.hero {
+  position: relative;
+  &__container {
+  }
+
+  &__body {
+    position: relative;
+    z-index: 3;
+
+    @include adaptiveValue("padding-top", 370, 180, 0, 1310, 991);
+    @include adaptiveValue("padding-bottom", 185, 100);
+
+    min-height: toRem(1024);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: $pc) {
+      min-height: 100svh;
+    }
+  }
+
+  &__content {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 50, 40);
+    }
+  }
+
+  &__title {
+    color: #fff;
+    @include adaptiveValue("font-size", 72, 30);
+    font-weight: 700;
+    line-height: 120%; /* 86.4px */
+
+    &:not(:last-child) {
+      margin-bottom: toRem(15);
+    }
+  }
+  &__text {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 120%; /* 28.8px */
+  }
+
+  &__legend {
+  }
+
+  &__bg-ibg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(134, 134, 134, 0.6);
+      z-index: 2;
+    }
+  }
+}
+.legend {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  @include adaptiveValue("gap", 30, 15);
+
+  &::before {
+    content: "";
+    width: 100%;
+    max-width: toRem(610);
+    height: toRem(2);
+    display: block;
+    background-color: #fff;
+
+    // flex: 0 0 toRem(610);
+    order: 2;
+  }
+  &__content {
+    white-space: nowrap;
+  }
+
+  &__name {
+    -webkit-text-stroke: toRem(1) #fff;
+    color: transparent;
+
+    @include adaptiveValue("font-size", 40, 30);
+    font-weight: 500;
+    line-height: 120%; /* 48px */
+
+    &:not(:last-child) {
+      margin-bottom: toRem(4);
+    }
+  }
+
+  &__title {
+    color: #fff;
+    @include adaptiveValue("font-size", 24, 20);
+    font-weight: 400;
+    line-height: 120%; /* 28.8px */
+  }
+
+  &__button {
+    order: 3;
+
+    background: #e02b67;
+    @include adaptiveValue("width", 70, 55);
+    @include adaptiveValue("height", 70, 55);
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    @include adaptiveValue("font-size", 22, 18);
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        background: rgba(223, 42, 102, 0.9);
+        &::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &::before {
+      transition: transform 0.3s ease 0s;
+    }
+  }
+}
+
+//====================================================================================================
+
+.content-sec {
+  @include adaptiveValue("padding-top", 80, 40);
+  @include adaptiveValue("padding-bottom", 175, 60);
+  &__container {
+  }
+
+  &__body {
+    display: grid;
+    @include adaptiveValue("gap", 150, 50);
+
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: toRem(2);
+      height: calc(100% - toRem(100));
+      @include adaptiveValue("top", 100, 50);
+      left: 50%;
+      transform: translateX(-50%);
+
+      background-color: #254e92;
+
+      @media (max-width: $mobile) {
+        left: toRem(-10);
+        transform: translateX(-50%);
+        height: calc(100% - toRem(50));
+      }
+    }
+  }
+
+  &__content {
+  }
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  column-gap: toRem(40);
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    @include adaptiveValue("row-gap", 25, 20, 0, 767, 375);
+  }
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    @include adaptiveValue("width", 14, 12);
+    @include adaptiveValue("height", 14, 12);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: #254e92;
+
+    @media (max-width: $mobile) {
+      left: toRem(-10);
+      transform: translateX(-50%);
+    }
+  }
+
+  &:first-child {
+    &::before {
+      @include adaptiveValue("top", 100, 50);
+    }
+  }
+
+  &_start {
+    align-items: flex-start;
+  }
+
+  &__images {
+    display: grid;
+    gap: toRem(15);
+    @media (min-width: $pc) {
+      flex: 0 1 toRem(542);
+    }
+    @media (max-width: $pc) and (min-width: $mobile) {
+      flex: 0 0 calc(50% - toRem(20));
+    }
+    @media (max-width: $mobile) {
+      order: -1;
+    }
+  }
+
+  &__image {
+    img {
+      max-width: 100%;
+    }
+
+    &_small {
+      max-width: toRem(357);
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  &__block {
+    @media (min-width: $pc) {
+      flex: 0 1 toRem(522);
+    }
+    @media (max-width: $pc) and (min-width: $mobile) {
+      flex: 0 0 calc(50% - toRem(20));
+    }
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: toRem(8);
+    }
+  }
+
+  &__text {
+    ul {
+      li {
+        display: flex;
+        column-gap: toRem(15);
+        padding-left: toRem(5);
+        &::before {
+          content: "";
+          width: toRem(5);
+          height: toRem(5);
+          display: block;
+          background-color: #000;
+          border-radius: 50%;
+          flex-shrink: 0;
+
+          margin: toRem(7) 0;
+        }
+      }
+    }
+  }
+}
+
+//========================================================================================================================================================
+
+.bottom {
+  @include adaptiveValue("padding-top", 170, 40);
+  @include adaptiveValue("padding-bottom", 170, 40);
+  background: rgba(134, 134, 134, 0.6);
+  &__container {
+  }
+
+  &__body {
+    display: flex;
+
+    @media (min-width: em(660)) {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: em(660)) {
+      flex-direction: column;
+    }
+
+    @include adaptiveValue("gap", 20, 15);
+    color: #fff;
+    @media (any-hover: hover) {
+      &:hover {
+        color: #e02b67;
+
+        .bottom__button {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+
+  &__tille {
+    @include adaptiveValue("font-size", 72, 30);
+    font-weight: 700;
+    line-height: 120%; /* 86.4px */
+    transition: all 0.3s ease 0s;
+  }
+
+  &__button {
+    background: #e02b67;
+    @include adaptiveValue("width", 70, 55);
+    @include adaptiveValue("height", 70, 55);
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    @include adaptiveValue("font-size", 22, 18);
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: em(660)) {
+      align-self: flex-end;
+    }
+
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        background: rgba(223, 42, 102, 0.9);
+      }
+    }
+    &::before {
+      transition: transform 0.7s ease 0s;
+    }
+  }
+}

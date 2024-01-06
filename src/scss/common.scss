@@ -1,0 +1,59 @@
+// Заголовки, загальні БЕМ блоки та інше...
+
+.title {
+  color: #141429;
+  font-family: Inter;
+  @include adaptiveValue("font-size", 24, 20);
+  font-weight: 500;
+  line-height: 150%; /* 36/24 */
+}
+
+.text {
+  color: #000;
+  text-align: justify;
+  font-family: Inter;
+  font-size: toRem(14);
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+
+  p {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 80, 30);
+    }
+  }
+}
+
+.mb-10 {
+  p {
+    &:not(:last-child) {
+      margin-bottom: toRem(10);
+    }
+  }
+}
+
+@for $i from 2 through 12 {
+  .mb-#{$i * 10} {
+    p,
+    ul {
+      &:not(:last-child) {
+        @include adaptiveValue("margin-bottom", $i * 10, 15);
+      }
+    }
+  }
+}
+
+//========================================================================================================================================================
+
+@for $i from 2 through 12 {
+  div.gap-#{$i * 10} {
+    @include adaptiveValue("gap", $i * 10, 10);
+  }
+}
+
+//========================================================================================================================================================
+
+// .fancybox__container {
+//     max-width: none;
+// }
+
+//========================================================================================================================================================
